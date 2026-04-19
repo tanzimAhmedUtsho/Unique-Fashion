@@ -53,7 +53,6 @@ const fashionData = {
       img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=400",
     },
   ],
-  // --- এখানে তোমার নিজের লিঙ্কগুলো বসিয়ে দাও ---
   social: {
     facebook: "https://www.facebook.com/tanzim.ahmed.utsho/",
     instagram: "https://www.instagram.com/indecisive_utsho/",
@@ -78,9 +77,9 @@ function Navbar() {
         <h1 class="serif text-2xl font-black tracking-tighter cursor-pointer" onclick="navigate('home')">${fashionData.brandName}</h1>
         <div class="flex items-center space-x-8">
             <div class="hidden md:flex space-x-8 font-semibold text-sm uppercase tracking-widest">
-                <a href="javascript:void(0)" onclick="navigate('home')" class="${currentPage === "home" ? "text-amber-700" : ""} hover:text-amber-700 transition text-black no-underline">Home</a>
-                <a href="javascript:void(0)" onclick="navigate('collection')" class="${currentPage === "collection" ? "text-amber-700" : ""} hover:text-amber-700 transition text-black no-underline">Collections</a>
-                <a href="#" class="hover:text-amber-700 transition text-black no-underline">About</a>
+                <a href="javascript:void(0)" onclick="navigate('home')" class="${currentPage === "home" ? "text-amber-700" : "text-black"} hover:text-amber-700 transition no-underline">Home</a>
+                <a href="javascript:void(0)" onclick="navigate('collection')" class="${currentPage === "collection" ? "text-amber-700" : "text-black"} hover:text-amber-700 transition no-underline">Collections</a>
+                <a href="javascript:void(0)" onclick="navigate('about')" class="${currentPage === "about" ? "text-amber-700" : "text-black"} hover:text-amber-700 transition no-underline">About</a>
             </div>
             <div class="relative cursor-pointer group" onclick="openCart()">
                 <i class="fas fa-shopping-bag text-2xl group-hover:text-amber-800 transition"></i>
@@ -92,12 +91,11 @@ function Navbar() {
 
 function Hero() {
   return `
-    <header class="relative h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
+    <header class="relative h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden bg-gray-50">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600" 
                  class="w-full h-full object-cover opacity-20 pointer-events-none">
         </div>
-        
         <div class="relative z-10">
             <span class="text-xs font-bold tracking-[0.5em] text-amber-800 uppercase italic">Established ${fashionData.established}</span>
             <h2 class="serif text-6xl md:text-8xl mt-4 mb-8 font-black text-gray-900 leading-none">Timeless Elegance</h2>
@@ -133,10 +131,35 @@ function Collection() {
     currentPage === "collection" ? "Full Collection" : "Curated Collection";
 
   return `
-    <section class="max-w-7xl mx-auto py-24 px-10">
+    <section class="max-w-7xl mx-auto py-24 px-10 animate-fade-in">
         <h3 class="serif text-4xl mb-12 font-black italic tracking-tight">${title}</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             ${cards}
+        </div>
+    </section>`;
+}
+
+function About() {
+  return `
+    <section class="max-w-7xl mx-auto py-24 px-10 animate-fade-in">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            <div class="relative">
+                <div class="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1534126511673-b6899657816a?q=80&w=800" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-10 -right-10 bg-amber-900 text-white p-10 rounded-[2rem] hidden lg:block shadow-xl">
+                    <p class="serif text-4xl font-black italic mb-2">25+</p>
+                    <p class="text-[10px] uppercase tracking-[0.3em] font-bold opacity-70">Years of Heritage</p>
+                </div>
+            </div>
+            <div>
+                <span class="text-xs font-bold tracking-[0.5em] text-amber-800 uppercase italic">Our Story</span>
+                <h2 class="serif text-5xl md:text-6xl mt-6 mb-8 font-black text-gray-900 leading-tight">Crafting Elegance Since ${fashionData.established}</h2>
+                <div class="space-y-6 text-gray-600 leading-relaxed text-lg font-medium">
+                    <p>Welcome to <span class="text-black font-bold">${fashionData.brandName}</span>, Jhenaidah's premier destination for luxury fashion.</p>
+                    <p>Founded by <span class="text-black font-bold">${fashionData.owner}</span>, we believe in quality and timeless style.</p>
+                </div>
+            </div>
         </div>
     </section>`;
 }
@@ -187,13 +210,17 @@ function startAdAnimation() {
 
 function renderApp() {
   let pageContent = Navbar();
+
   if (currentPage === "home") {
     pageContent += Hero();
     pageContent += Collection();
     pageContent += AnimatedAd();
   } else if (currentPage === "collection") {
     pageContent += `<div class="bg-gray-50 min-h-screen pt-6">${Collection()}</div>`;
+  } else if (currentPage === "about") {
+    pageContent += About();
   }
+
   pageContent += Footer();
   root.innerHTML = pageContent;
 

@@ -92,11 +92,13 @@ function Navbar() {
 
 function Hero() {
   return `
-    <header class="relative h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden bg-gray-50">
-        <div class="absolute inset-0 -z-10">
-            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600" class="w-full h-full object-cover opacity-20">
+    <header class="relative h-[70vh] flex items-center justify-center text-center px-6 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600" 
+                 class="w-full h-full object-cover opacity-20 pointer-events-none">
         </div>
-        <div>
+        
+        <div class="relative z-10">
             <span class="text-xs font-bold tracking-[0.5em] text-amber-800 uppercase italic">Established ${fashionData.established}</span>
             <h2 class="serif text-6xl md:text-8xl mt-4 mb-8 font-black text-gray-900 leading-none">Timeless Elegance</h2>
             <p class="text-gray-500 mb-8 max-w-md mx-auto text-sm tracking-wide font-medium">Experience the finest craftsmanship in Jhenaidah's premier fashion house.</p>

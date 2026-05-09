@@ -142,23 +142,49 @@ function Collection() {
 function About() {
   return `
     <section class="max-w-7xl mx-auto py-24 px-10 animate-fade-in">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center mb-32">
             <div class="relative">
                 <div class="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1534126511673-b6899657816a?q=80&w=800" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1534126511673-b6899657816a?q=80&w=800" class="w-full h-full object-cover" alt="Heritage Image">
                 </div>
                 <div class="absolute -bottom-10 -right-10 bg-amber-900 text-white p-10 rounded-[2rem] hidden lg:block shadow-xl">
-                    <p class="serif text-4xl font-black italic mb-2">25+</p>
+                    <p class="serif text-4xl font-black italic mb-2">26+</p>
                     <p class="text-[10px] uppercase tracking-[0.3em] font-bold opacity-70">Years of Heritage</p>
                 </div>
             </div>
             <div>
                 <span class="text-xs font-bold tracking-[0.5em] text-amber-800 uppercase italic">Our Story</span>
                 <h2 class="serif text-5xl md:text-6xl mt-6 mb-8 font-black text-gray-900 leading-tight">Crafting Elegance Since ${fashionData.established}</h2>
-                <div class="space-y-6 text-gray-600 leading-relaxed text-lg font-medium">
-                    <p>Welcome to <span class="text-black font-bold">${fashionData.brandName}</span>, Jhenaidah's premier destination for luxury fashion.</p>
-                    <p>Founded by <span class="text-black font-bold">${fashionData.owner}</span>, we believe in quality and timeless style.</p>
+                <div class="space-y-6 text-gray-500 leading-relaxed text-lg font-medium">
+                    <p>Welcome to <span class="text-black font-bold">${fashionData.brandName}</span>, Jhenaidah's premier destination for luxury fashion. We don't just create clothes; we curate experiences that define your unique style and identity.</p>
+                    <p>Founded by <span class="text-black font-bold">${fashionData.owner}</span>, our journey began with a simple passion for exquisite tailoring. Over the decades, we have evolved into a symbol of trust and sophistication, blending traditional craftsmanship with contemporary trends.</p>
+                    <p class="italic border-l-4 border-amber-800 pl-6 py-2">"Style is a way to say who you are without having to speak. At SUN FASHION, we give you the voice."</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- Our Values Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-gray-100 pt-24">
+            <div class="text-center p-10 bg-gray-50 rounded-[3rem] hover:shadow-xl transition duration-500 group">
+                <div class="w-16 h-16 bg-black text-white flex items-center justify-center rounded-2xl mx-auto mb-8 group-hover:bg-amber-900 transition-colors">
+                    <i class="fas fa-gem text-2xl"></i>
+                </div>
+                <h4 class="serif text-2xl font-bold mb-4">Premium Quality</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">We source the finest materials globally to ensure every stitch reflects our commitment to perfection.</p>
+            </div>
+            <div class="text-center p-10 bg-gray-50 rounded-[3rem] hover:shadow-xl transition duration-500 group">
+                <div class="w-16 h-16 bg-black text-white flex items-center justify-center rounded-2xl mx-auto mb-8 group-hover:bg-amber-900 transition-colors">
+                    <i class="fas fa-magic text-2xl"></i>
+                </div>
+                <h4 class="serif text-2xl font-bold mb-4">Unique Designs</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Each piece is exclusively crafted to make sure you stand out in every crowd with timeless elegance.</p>
+            </div>
+            <div class="text-center p-10 bg-gray-50 rounded-[3rem] hover:shadow-xl transition duration-500 group">
+                <div class="w-16 h-16 bg-black text-white flex items-center justify-center rounded-2xl mx-auto mb-8 group-hover:bg-amber-900 transition-colors">
+                    <i class="fas fa-handshake text-2xl"></i>
+                </div>
+                <h4 class="serif text-2xl font-bold mb-4">Customer First</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Your satisfaction is our legacy. We believe in building relationships, not just making sales.</p>
             </div>
         </div>
     </section>`;

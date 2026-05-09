@@ -108,8 +108,8 @@ function Hero() {
 function Collection() {
   const cards = fashionData.products
     .map(
-      (p) => `
-    <div class="group relative bg-white border border-gray-100 p-4 rounded-3xl hover:shadow-2xl transition duration-500">
+      (p) => ` 
+    <div class="group relative bg-white border border-gray-100 p-4 rounded-3xl hover:shadow-2xl hover:-translate-y-1 hover:border-amber-300 transition duration-500">
         ${p.discount ? `<span class="absolute top-6 left-6 bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full z-10 animate-bounce">SAVE ${p.discount}</span>` : ""}
         <div class="h-96 overflow-hidden rounded-2xl mb-6 bg-gray-50">
             <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
@@ -119,7 +119,7 @@ function Collection() {
             <span class="text-xl font-black text-amber-900">৳${p.price.toLocaleString()}</span>
             ${p.oldPrice ? `<span class="text-sm text-gray-400 line-through font-medium">৳${p.oldPrice.toLocaleString()}</span>` : ""}
         </div>
-        <button onclick="addToCart(${p.id})" class="w-full bg-black text-white py-4 rounded-2xl font-bold hover:bg-amber-800 transition-all flex items-center justify-center space-x-2 active:scale-95 shadow-lg shadow-black/5">
+        <button onclick="addToCart(${p.id})" class="w-full bg-black text-white py-4 rounded-2xl font-bold hover:bg-amber-800 transition-all flex items-center justify-center space-x-2 active:scale-95 shadow-lg shadow-black/5 group-hover:shadow-amber-500/30">
             <i class="fas fa-shopping-bag text-sm"></i>
             <span>Add to Cart</span>
         </button>

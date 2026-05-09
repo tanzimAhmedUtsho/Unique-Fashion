@@ -232,6 +232,14 @@ function About() {
                         </div>
                     </div>
                 </div>
+                <div class="mt-12 pt-12 border-t border-gray-800">
+                    <h5 class="font-bold text-lg mb-4 text-white">Find Us Here</h5>
+                    <div class="aspect-video rounded-2xl overflow-hidden shadow-lg border border-gray-700">
+                        <!-- Replace the src with your actual Google Maps embed URL -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3674.341517415814!2d89.1678257743997!3d22.92383027920111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ff752912443477%3A0x35639149423c907!2sJhenaidah%20Sadar%20Hospital!5e0!3m2!1sen!2sbd!4v1701880000000!5m2!1sen!2sbd" 
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
             </div>
             <div class="p-12 md:p-20 bg-white">
                 <form class="space-y-6" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent.');">

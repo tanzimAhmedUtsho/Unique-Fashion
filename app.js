@@ -62,12 +62,25 @@ const fashionData = {
 
 const root = document.getElementById("root");
 let currentPage = "home";
+let selectedProduct = null;
 
 // ২. নেভিগেশন ফাংশন
 window.navigate = function (page) {
   currentPage = page;
   renderApp();
   window.scrollTo(0, 0);
+};
+
+window.openQuickView = function (productId) {
+  selectedProduct = fashionData.products.find((p) => p.id === productId);
+  renderApp();
+  document.body.style.overflow = "hidden"; // Prevent background scrolling
+};
+
+window.closeQuickView = function () {
+  selectedProduct = null;
+  renderApp();
+  document.body.style.overflow = "auto"; // Restore scrolling
 };
 
 // ৩. কম্পোনেন্ট ফাংশনস
@@ -111,7 +124,7 @@ function Collection() {
       (p) => ` 
     <div class="group relative bg-white border border-gray-100 p-4 rounded-3xl hover:shadow-2xl hover:-translate-y-1 hover:border-amber-300 transition duration-500">
         ${p.discount ? `<span class="absolute top-6 left-6 bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full z-10 animate-bounce">SAVE ${p.discount}</span>` : ""}
-        <div class="h-96 overflow-hidden rounded-2xl mb-6 bg-gray-50">
+        <div class="h-96 overflow-hidden rounded-2xl mb-6 bg-gray-50 cursor-zoom-in" onclick="openQuickView(${p.id})">
             <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
         </div>
         <h4 class="text-lg font-bold text-gray-900 mb-1 leading-tight">${p.name}</h4>
@@ -190,6 +203,40 @@ function About() {
     </section>`;
 }
 
+function QuickViewModal(product) {
+  if (!product) return "";
+  return `
+    <div id="quick-view-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 animate-fade-in">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeQuickView()"></div>
+        <div class="relative bg-white w-full max-w-5xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col md:flex-row transform transition-all duration-500">
+            <button onclick="closeQuickView()" class="absolute top-6 right-6 z-10 w-12 h-12 flex items-center justify-center bg-white/80 backdrop-blur-md rounded-full hover:bg-black hover:text-white transition shadow-lg">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="w-full md:w-1/2 h-[400px] md:h-auto overflow-hidden">
+                <img src="${product.img}" class="w-full h-full object-cover hover:scale-110 transition duration-1000">
+            </div>
+            <div class="w-full md:w-1/2 p-10 md:p-20 flex flex-col justify-center bg-white border-l border-gray-50">
+                <span class="text-xs font-bold tracking-[0.4em] text-amber-800 uppercase mb-4 italic">Exclusive Piece</span>
+                <h2 class="serif text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">${product.name}</h2>
+                <div class="flex items-center space-x-6 mb-8">
+                    <span class="text-4xl font-black text-amber-900">৳${product.price.toLocaleString()}</span>
+                    ${product.oldPrice ? `<span class="text-xl text-gray-300 line-through font-medium">৳${product.oldPrice.toLocaleString()}</span>` : ""}
+                </div>
+                <p class="text-gray-500 mb-10 text-lg leading-relaxed font-medium">
+                    Redefine your wardrobe with this signature ${product.name}. Carefully crafted for those who appreciate the finer things in life. Perfect for making a statement at any event.
+                </p>
+                <div class="space-y-4">
+                    <button onclick="addToCart(${product.id}); closeQuickView();" class="w-full bg-black text-white py-5 rounded-2xl font-bold hover:bg-amber-900 transition-all flex items-center justify-center space-x-3 shadow-2xl active:scale-95">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Add to Shopping Bag</span>
+                    </button>
+                    <p class="text-[10px] text-center uppercase tracking-widest text-gray-400 font-bold">Free Premium Delivery in Jhenaidah</p>
+                </div>
+            </div>
+        </div>
+    </div>`;
+}
+
 function AnimatedAd() {
   return `
     <div id="promo-ad" class="bg-amber-900 text-white py-16 px-10 my-12 overflow-hidden transition-all duration-1000 transform opacity-100 scale-100 mx-4 md:mx-10 rounded-[3rem]">
@@ -248,6 +295,7 @@ function renderApp() {
   }
 
   pageContent += Footer();
+  pageContent += QuickViewModal(selectedProduct);
   root.innerHTML = pageContent;
 
   if (currentPage === "home") startAdAnimation();

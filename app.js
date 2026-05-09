@@ -349,16 +349,54 @@ function AnimatedAd() {
 
 function Footer() {
   return `
-    <footer class="bg-black text-white py-20 px-10 mt-10">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-center md:text-left">
-            <div>
-                <h4 class="serif text-3xl mb-4 italic font-black">${fashionData.brandName}</h4>
-                <p class="text-gray-400 text-[10px] uppercase tracking-widest font-medium">Founded by ${fashionData.owner} | Since ${fashionData.established}</p>
+    <footer class="bg-black text-white pt-32 pb-10 px-10 mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20 text-center md:text-left">
+                <div class="space-y-8">
+                    <h4 class="serif text-3xl italic font-black">${fashionData.brandName}</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed mx-auto md:mx-0 max-w-xs">Redefining luxury fashion with timeless designs and unparalleled craftsmanship since ${fashionData.established}.</p>
+                    <div class="flex justify-center md:justify-start gap-6 text-xl text-gray-500">
+                        <a href="${fashionData.social.instagram}" target="_blank" class="hover:text-amber-600 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="${fashionData.social.facebook}" target="_blank" class="hover:text-amber-600 transition"><i class="fab fa-facebook"></i></a>
+                        <a href="${fashionData.social.twitter}" target="_blank" class="hover:text-amber-600 transition"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-[0.3em] mb-10 text-amber-700">Quick Links</h5>
+                    <ul class="space-y-4 text-sm font-medium text-gray-400">
+                        <li><a href="javascript:void(0)" onclick="navigate('home')" class="hover:text-white transition">Home</a></li>
+                        <li><a href="javascript:void(0)" onclick="navigate('collection')" class="hover:text-white transition">Collections</a></li>
+                        <li><a href="javascript:void(0)" onclick="navigate('about')" class="hover:text-white transition">Our Story</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-[0.3em] mb-10 text-amber-700">Client Service</h5>
+                    <ul class="space-y-4 text-sm font-medium text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Shipping & Returns</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-[0.3em] mb-10 text-amber-700">Newsletter</h5>
+                    <p class="text-gray-500 text-sm mb-6">Join our mailing list for exclusive previews and fashion news.</p>
+                    <div class="relative max-w-xs mx-auto md:mx-0">
+                        <input type="email" placeholder="Email address" class="w-full bg-white/5 border-none rounded-xl py-4 px-6 text-sm focus:ring-1 focus:ring-amber-900 outline-none transition-all placeholder:text-gray-700">
+                        <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-amber-900 text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-amber-800 transition">Join</button>
+                    </div>
+                </div>
             </div>
-            <div class="flex justify-center md:justify-end gap-10 text-xl text-gray-400">
-                <a href="${fashionData.social.instagram}" target="_blank" class="hover:text-white transition cursor-pointer"><i class="fab fa-instagram"></i></a>
-                <a href="${fashionData.social.facebook}" target="_blank" class="hover:text-white transition cursor-pointer"><i class="fab fa-facebook"></i></a>
-                <a href="${fashionData.social.twitter}" target="_blank" class="hover:text-white transition cursor-pointer"><i class="fab fa-twitter"></i></a>
+            
+            <div class="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-[10px] uppercase tracking-widest text-gray-600 font-bold text-center md:text-left">© ${new Date().getFullYear()} ${fashionData.brandName}. Founded by ${fashionData.owner}.</p>
+                <div class="flex gap-6 text-gray-700 text-lg">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-apple-pay"></i>
+                </div>
             </div>
         </div>
     </footer>`;

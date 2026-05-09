@@ -206,6 +206,51 @@ function About() {
                 <p class="text-gray-500 text-sm leading-relaxed">Your satisfaction is our legacy. We believe in building relationships, not just making sales.</p>
             </div>
         </div>
+
+        <!-- Contact Section -->
+        <div class="mt-32 bg-white rounded-[3rem] shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 border border-gray-100">
+            <div class="bg-black p-12 md:p-20 text-white">
+                <span class="text-xs font-bold tracking-[0.5em] text-amber-500 uppercase italic">Contact Us</span>
+                <h3 class="serif text-4xl md:text-5xl mt-6 mb-10 font-black leading-tight">We'd love to hear from you.</h3>
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-6">
+                        <div class="w-12 h-12 bg-amber-900 rounded-2xl flex items-center justify-center shrink-0">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-lg mb-1 text-white">Visit Our Atelier</h5>
+                            <p class="text-gray-400 text-sm">Main Road, Jhenaidah, Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-6">
+                        <div class="w-12 h-12 bg-amber-900 rounded-2xl flex items-center justify-center shrink-0">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-lg mb-1 text-white">Call Us</h5>
+                            <p class="text-gray-400 text-sm">+880 1234 567890</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-12 md:p-20 bg-white">
+                <form class="space-y-6" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent.');">
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-widest font-black mb-3 text-gray-400">Full Name</label>
+                        <input type="text" placeholder="Your Name" class="w-full bg-gray-50 border-none rounded-2xl py-5 px-8 text-sm focus:ring-2 focus:ring-amber-900 outline-none transition-all" required>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-widest font-black mb-3 text-gray-400">Email Address</label>
+                        <input type="email" placeholder="Your Email" class="w-full bg-gray-50 border-none rounded-2xl py-5 px-8 text-sm focus:ring-2 focus:ring-amber-900 outline-none transition-all" required>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-widest font-black mb-3 text-gray-400">Message</label>
+                        <textarea rows="4" placeholder="How can we help you today?" class="w-full bg-gray-50 border-none rounded-2xl py-5 px-8 text-sm focus:ring-2 focus:ring-amber-900 outline-none transition-all" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-black text-white py-5 rounded-2xl font-bold hover:bg-amber-900 transition-all shadow-xl active:scale-95">Send Message</button>
+                </form>
+            </div>
+        </div>
     </section>`;
 }
 

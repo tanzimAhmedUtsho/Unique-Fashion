@@ -63,6 +63,7 @@ const fashionData = {
 const root = document.getElementById("root");
 let currentPage = "home";
 let selectedProduct = null;
+let isChatOpen = false;
 
 // ২. নেভিগেশন ফাংশন
 window.navigate = function (page) {
@@ -81,6 +82,11 @@ window.closeQuickView = function () {
   selectedProduct = null;
   renderApp();
   document.body.style.overflow = "auto"; // Restore scrolling
+};
+
+window.toggleChat = function () {
+  isChatOpen = !isChatOpen;
+  renderApp();
 };
 
 // ৩. কম্পোনেন্ট ফাংশনস
@@ -237,6 +243,44 @@ function QuickViewModal(product) {
     </div>`;
 }
 
+function ChatWidget() {
+  return `
+    <div class="fixed bottom-10 right-10 z-[90]">
+        ${
+          isChatOpen
+            ? `
+        <div class="bg-white w-80 h-[450px] rounded-[2.5rem] shadow-2xl mb-6 flex flex-col overflow-hidden animate-fade-in border border-gray-100">
+            <div class="bg-black p-6 text-white flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-amber-900 rounded-full flex items-center justify-center font-bold text-xs uppercase">SF</div>
+                    <div>
+                        <h4 class="font-bold text-sm leading-none">Support Team</h4>
+                        <p class="text-[9px] opacity-60 mt-1 uppercase tracking-widest font-bold">Typically replies in 5m</p>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-white/50 hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="flex-1 p-6 overflow-y-auto space-y-4 bg-gray-50/50">
+                <div class="bg-white p-4 rounded-2xl rounded-tl-none text-xs text-gray-600 shadow-sm max-w-[85%] leading-relaxed">
+                    Welcome to <b>SUN FASHION</b>! How can we assist you with your style today?
+                </div>
+            </div>
+            <div class="p-4 bg-white border-t border-gray-50">
+                <div class="relative">
+                    <input type="text" placeholder="Write a message..." class="w-full bg-gray-100 border-none rounded-xl py-4 px-5 text-xs focus:ring-1 focus:ring-amber-900 outline-none transition-all">
+                    <button class="absolute right-4 top-1/2 -translate-y-1/2 text-amber-900 hover:scale-110 transition"><i class="fas fa-paper-plane text-sm"></i></button>
+                </div>
+            </div>
+        </div>`
+            : ""
+        }
+        <button onclick="toggleChat()" class="w-16 h-16 bg-black text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 group border-4 border-white">
+            <i class="fas ${isChatOpen ? "fa-comment-slash" : "fa-comment-alt"} text-2xl"></i>
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
+        </button>
+    </div>`;
+}
+
 function AnimatedAd() {
   return `
     <div id="promo-ad" class="bg-amber-900 text-white py-16 px-10 my-12 overflow-hidden transition-all duration-1000 transform opacity-100 scale-100 mx-4 md:mx-10 rounded-[3rem]">
@@ -296,6 +340,7 @@ function renderApp() {
 
   pageContent += Footer();
   pageContent += QuickViewModal(selectedProduct);
+  pageContent += ChatWidget();
   root.innerHTML = pageContent;
 
   if (currentPage === "home") startAdAnimation();
